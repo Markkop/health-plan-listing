@@ -1,24 +1,33 @@
 <template>
-  <select 
-    :name="type" 
-    :id="`${type}-select`"
-    @change="onChange"
-    :disabled="!hasRequiredSelection || isLoading"
-    >
-    <option
-      selected
-      hidden
+  <div>
+    <label 
+      :id="`${type}-select-label`"
+      class='select-label'
+      :for="type"
       >
-      {{ placeholderOptionText }}
-    </option>
-    <option
-      v-for="option in options" 
-      :value="option.id"
-      :key="option.id"
+      {{texts[type]}}: 
+    </label>
+    <select 
+      :name="type" 
+      :id="`${type}-select`"
+      @change="onChange"
+      :disabled="!hasRequiredSelection || isLoading"
       >
-      {{ option.nome }}
-    </option>
-  </select>
+      <option
+        selected
+        hidden
+        >
+        {{ placeholderOptionText }}
+      </option>
+      <option
+        v-for="option in options" 
+        :value="option.id"
+        :key="option.id"
+        >
+        {{ option.nome }}
+      </option>
+    </select>
+  </div>
 </template>
 
 <script>
@@ -48,7 +57,7 @@ export default {
       }
 
       if (!this.hasRequiredSelection) {
-        return `Selecione um campo anterior`
+        return `Selecione o campo anterior`
       }
 
       return `Selecione um(a) ${this.texts[this.type]}`
@@ -67,4 +76,7 @@ export default {
 </script>
 
 <style scoped>
+  .select-label {
+    text-transform: capitalize;
+  }
 </style>
