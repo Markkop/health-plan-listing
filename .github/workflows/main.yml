@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn -g @vue/cli-service
+    - run: yarn
     - run: yarn build --if-present
 
   deploy:
