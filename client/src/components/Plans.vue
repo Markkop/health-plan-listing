@@ -20,11 +20,11 @@ export default {
     plans: Array
   },
   computed: {
-    hasPlans() {
+    hasPlans () {
       return this.plans.length
     }
   }
-};
+}
 </script>
 <style scoped>
   #plans-list {

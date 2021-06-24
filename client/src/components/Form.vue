@@ -28,8 +28,8 @@
         :hasRequiredSelection="Boolean(selectedProfession)"
         @change="setSelectedOption"
       />
-      <InputBirthDate 
-        @birth-date-changed="onBirthDateChange" 
+      <InputBirthDate
+        @birth-date-changed="onBirthDateChange"
       />
       <button
         type="submit"
@@ -52,119 +52,119 @@ export default {
     Select,
     InputBirthDate
   },
-  data() {
+  data () {
     return {
       city: {
         list: [],
         selected: null,
-        isLoading: false,
+        isLoading: false
       },
       state: {
         list: [],
         selected: null,
-        isLoading: false,
+        isLoading: false
       },
       profession: {
         list: [],
         selected: null,
-        isLoading: false,
+        isLoading: false
       },
       entity: {
         list: [],
         selected: null,
-        isLoading: false,
+        isLoading: false
       },
       birthDate: '',
       submitFormText: 'Consultar Planos'
     }
   },
   computed: {
-    selectedCity() {
+    selectedCity () {
       return this.city.selected
     },
-    selectedState() {
+    selectedState () {
       return this.state.selected
     },
-    selectedProfession() {
+    selectedProfession () {
       return this.profession.selected
     },
-    selectedEntity() {
+    selectedEntity () {
       return this.entity.selected
     },
-    isFormValid() {
-      return Boolean(this.city.selected
-        && this.state.selected
-        && this.profession.selected
-        && this.entity.selected
-        && this.birthDate)
+    isFormValid () {
+      return Boolean(this.city.selected &&
+        this.state.selected &&
+        this.profession.selected &&
+        this.entity.selected &&
+        this.birthDate)
     }
   },
   watch: {
-    async selectedState() {
+    async selectedState () {
       const stateId = this.state.selected.id
       const cities = await this.getCities(stateId)
       this.setCities(cities)
       this.city.selected = null
     },
-    async selectedCity() {
+    async selectedCity () {
       this.setProfessions([])
       this.profession.selected = null
       if (!this.city.selected) {
         return
       }
       const cityName = this.city.selected.nome
-      const stateInitials =  this.state.selected.sigla
+      const stateInitials = this.state.selected.sigla
       const professions = await this.getProfessions(stateInitials, cityName)
       this.setProfessions(professions)
     },
-    async selectedProfession() {
+    async selectedProfession () {
       this.setEntities([])
       this.entity.selected = null
       if (!this.profession.selected) {
         return
       }
       const cityName = this.city.selected.nome
-      const stateInitials =  this.state.selected.sigla
+      const stateInitials = this.state.selected.sigla
       const profession = this.profession.selected.nome
       const entities = await this.getEntities(stateInitials, cityName, profession)
       this.setEntities(entities)
     }
   },
   methods: {
-    async fetchAndSetLoading(url, type) {
+    async fetchAndSetLoading (url, type) {
       this[type].isLoading = true
       const response = await fetch(url)
       const cities = await response.json()
       this[type].isLoading = false
       return cities
     },
-    async getCities(stateId) {
+    async getCities (stateId) {
       const citiesUrl = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${stateId}/municipios`
       return this.fetchAndSetLoading(citiesUrl, 'city')
     },
-    async getStates() {
+    async getStates () {
       const statesUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
       return this.fetchAndSetLoading(statesUrl, 'state')
     },
-    async getProfessions(stateInitials, cityName) {
-      const cityNameUtf8 = Buffer.from(cityName, 'utf-8');
+    async getProfessions (stateInitials, cityName) {
+      const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
       const professionsUrl = `http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/profissao/${stateInitials}/${cityNameUtf8}?api-key=ddd70c32-fc98-4618-b494-a9698f824353`
       return this.fetchAndSetLoading(professionsUrl, 'profession')
     },
-    async getEntities(stateInitials, cityName, profession) {
-      const cityNameUtf8 = Buffer.from(cityName, 'utf-8');
+    async getEntities (stateInitials, cityName, profession) {
+      const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
       const entitiesUrl = `http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/entidade/${profession}/${stateInitials}/${cityNameUtf8}?api-key=4b94dba2-5524-4632-939b-92df1c50a645`
       return this.fetchAndSetLoading(entitiesUrl, 'entity')
     },
-    async setStates(states) {
+    async setStates (states) {
       this.sortByName(states)
       this.state.list = states
     },
-    async setCities(cities) {
+    async setCities (cities) {
       this.sortByName(cities)
       this.city.list = cities
     },
-    async setProfessions(professions) {
+    async setProfessions (professions) {
       const mappedProfessions = professions.map(({ profissao }) => ({
         id: profissao,
         nome: profissao
@@ -172,7 +172,7 @@ export default {
       this.sortByName(mappedProfessions)
       this.profession.list = mappedProfessions
     },
-    async setEntities(entities) {
+    async setEntities (entities) {
       const mappedEntities = entities.map(({ NomeFantasia, RazaoSocial }) => ({
         id: NomeFantasia,
         nome: `${NomeFantasia} - ${RazaoSocial}`
@@ -180,16 +180,16 @@ export default {
       this.sortByName(mappedEntities)
       this.entity.list = mappedEntities
     },
-    sortByName(list) {
+    sortByName (list) {
       list.sort((itemA, itemB) => itemA.nome.localeCompare(itemB.nome))
     },
-    setSelectedOption(type, selectedOption) {
+    setSelectedOption (type, selectedOption) {
       this[type].selected = selectedOption
     },
-    onBirthDateChange(dateString) {
+    onBirthDateChange (dateString) {
       this.birthDate = dateString
     },
-    async onSubmit() {
+    async onSubmit () {
       if (!this.isFormValid) {
         this.handleInvalidForm()
         return
@@ -200,19 +200,19 @@ export default {
         entidade: this.entity.selected.id,
         uf: this.state.selected.sigla,
         cidade: this.city.selected.nome,
-        datanascimento: [formattedDateString],
+        datanascimento: [formattedDateString]
       }
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
-          "content-type": "application/json;charset=UTF-8",
+          'content-type': 'application/json;charset=UTF-8'
         }
       })
       const plans = await response.json()
       this.$emit('plans-changed', plans)
     },
-    handleInvalidForm() {
+    handleInvalidForm () {
       const defaultSubmitText = this.submitFormText
       this.submitFormText = 'Preencha todos os campos corretamente'
       setTimeout(() => {
@@ -220,10 +220,10 @@ export default {
       }, 2000)
     }
   },
-  async created() {
+  async created () {
     const states = await this.getStates()
     this.setStates(states)
-  },
+  }
 }
 </script>
 

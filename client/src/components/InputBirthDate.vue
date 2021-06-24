@@ -1,8 +1,8 @@
 <template>
   <div>
     <label for="birthDate">Birth Date: </label>
-    <input 
-      type="text" 
+    <input
+      type="text"
       name="birthDate"
       class="form-input"
       placeholder="DD-MM-AAAA"
@@ -18,7 +18,7 @@
 <script>
 export default {
   name: 'InputBirthDate',
-  data() {
+  data () {
     return {
       isValid: true,
       birthDate: '',
@@ -27,10 +27,10 @@ export default {
   },
   computed: {
     formattedBirthDate: {
-      get() {
+      get () {
         return this.birthDate
       },
-      set(newValue) {
+      set (newValue) {
         this.birthDate = this.dateFormatter(newValue)
       }
     }
@@ -48,7 +48,7 @@ export default {
 
       return `${currentValue.slice(0, 2)}-${currentValue.slice(2, 4)}-${currentValue.slice(4, 8)}`
     },
-    onChange(event) {
+    onChange (event) {
       const dateString = event.target.value
       const isValid = this.validateBirthDate(dateString)
       if (isValid) {
@@ -59,11 +59,11 @@ export default {
 
       this.isValid = false
     },
-    validateBirthDate(dateString) {
+    validateBirthDate (dateString) {
       const regex = new RegExp(this.dateStringRegex)
       return regex.test(dateString)
     }
-  },
+  }
 }
 </script>
 

@@ -10,27 +10,27 @@
 </template>
 
 <script>
-import Plans from './Plans';
-import Form from './Form';
+import Plans from './Plans'
+import Form from './Form'
 import mockedPlans from '../mocks/plans'
 
 export default {
   name: 'Home',
   components: {
     Plans,
-    Form,
+    Form
   },
-  data() {
+  data () {
     return {
       plans: mockedPlans
     }
   },
   methods: {
-    OnPlansChanged(plans) {
+    OnPlansChanged (plans) {
       this.plans = plans.planos
     }
   }
-};
+}
 </script>
 <style scoped>
   #home-main {

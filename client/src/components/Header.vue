@@ -8,13 +8,13 @@ export default {
   name: 'Header',
   components: {
   },
-  data() {
+  data () {
     return {
     }
   },
   methods: {
   }
-};
+}
 </script>
 <style scoped>
   #page-header {

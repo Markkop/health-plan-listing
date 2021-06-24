@@ -1,14 +1,14 @@
 <template>
   <div class="select-container">
-    <label 
+    <label
       :id="`${type}-select-label`"
       class='select-label'
       :for="type"
       >
-      {{texts[type]}}: 
+      {{texts[type]}}:
     </label>
-    <select 
-      :name="type" 
+    <select
+      :name="type"
       :id="`${type}-select`"
       class='form-select form-input'
       @change="onChange"
@@ -21,7 +21,7 @@
         {{ placeholderOptionText }}
       </option>
       <option
-        v-for="option in options" 
+        v-for="option in options"
         :value="option.id"
         :key="option.id"
         >
@@ -49,30 +49,30 @@ export default {
       default: true
     },
     options: Array,
-    isLoading: Boolean,
+    isLoading: Boolean
   },
   computed: {
-    placeholderOptionText() {
+    placeholderOptionText () {
       if (this.isLoading) {
         return 'Carregando...'
       }
 
       if (!this.hasRequiredSelection) {
-        return `Selecione o campo anterior`
+        return 'Selecione o campo anterior'
       }
 
       return `Selecione um(a) ${this.texts[this.type]}`
-    },
+    }
   },
   methods: {
-    onChange(event) {
+    onChange (event) {
       const optionValue = event.target.value
       const selectedOption = this.options.find(option => {
         return String(option.id) === optionValue
       })
       this.$emit('change', this.type, selectedOption)
     }
-  },
+  }
 }
 </script>
 

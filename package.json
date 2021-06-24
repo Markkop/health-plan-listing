@@ -9,7 +9,8 @@
     "dev:server": "nodemon --exec babel-node server/src",
     "build:client": "vue-cli-service build",
     "build:server": "babel server/src --out-dir server/dist",
-    "build": "yarn build:client && yarn build:server"
+    "build": "yarn build:client && yarn build:server",
+    "lint": "eslint client/src/**/*.vue --fix"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -41,22 +42,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "nodemon": "^2.0.7",
     "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "no-unused-vars": "warn"
-    }
   },
   "browserslist": [
     "> 1%",
