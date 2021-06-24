@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Marcelo 'Mark' Kopmann",
   "scripts": {
+    "start": "node server/dist",
     "dev:client": "vue-cli-service serve",
     "dev:server": "nodemon --exec babel-node server/src",
     "build:client": "vue-cli-service build",
