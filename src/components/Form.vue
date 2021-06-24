@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <form>
+    <form @submit.prevent="onSubmit">
       <Select
         type="state"
         :options="state.list"
@@ -31,6 +31,11 @@
       <InputBirthDate 
         @birth-date-changed="onBirthDateChange" 
       />
+      <button
+        type="submit"
+        >
+        Consultar Planos
+      </button>
     </form>
   </main>
 </template>
@@ -189,6 +194,24 @@ export default {
     onBirthDateChange(dateString) {
       this.birthDate = dateString
     },
+    async onSubmit() {
+      const url = 'http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c'
+      const formattedDateString = this.birthDate.split('-').reverse().join('-')
+      const body = {
+        entidade: this.entity.selected.id,
+        uf: this.state.selected.sigla,
+        cidade: this.city.selected.nome,
+        datanascimento: [formattedDateString],
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          "content-type": "application/json;charset=UTF-8",
+        }
+      })
+      const plans = await response.json()
+      this.$emit('plans-changed', plans)
     }
   },
   async created() {
