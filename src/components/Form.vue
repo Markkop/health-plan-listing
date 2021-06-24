@@ -216,7 +216,7 @@ export default {
       this.submitFormText = 'Preencha todos os campos corretamente'
       setTimeout(() => {
         this.submitFormText = defaultSubmitText
-      }, 1000)
+      }, 2000)
     }
   },
   async created() {

@@ -9,7 +9,7 @@
       maxlength="10"
       :pattern="dateStringRegex"
       :class="isValid ? '' : 'invalid'"
-      @blur="onBlur"
+      @change="onChange"
       >
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
 
       return `${currentValue.slice(0, 2)}-${currentValue.slice(2, 4)}-${currentValue.slice(4, 8)}`
     },
-    onBlur(event) {
+    onChange(event) {
       const dateString = event.target.value
       const isValid = this.validateBirthDate(dateString)
       if (isValid) {
