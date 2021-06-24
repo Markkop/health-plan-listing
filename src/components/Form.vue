@@ -34,7 +34,7 @@
       <button
         type="submit"
         >
-        Consultar Planos
+        {{ submitFormText }}
       </button>
     </form>
   </main>
@@ -73,6 +73,7 @@ export default {
         isLoading: false,
       },
       birthDate: '',
+      submitFormText: 'Consultar Planos'
     }
   },
   computed: {
@@ -87,6 +88,13 @@ export default {
     },
     selectedEntity() {
       return this.entity.selected
+    },
+    isFormValid() {
+      return Boolean(this.city.selected
+        && this.state.selected
+        && this.profession.selected
+        && this.entity.selected
+        && this.birthDate)
     }
   },
   watch: {
@@ -195,6 +203,10 @@ export default {
       this.birthDate = dateString
     },
     async onSubmit() {
+      if (!this.isFormValid) {
+        this.handleInvalidForm()
+        return
+      }
       const url = 'http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c'
       const formattedDateString = this.birthDate.split('-').reverse().join('-')
       const body = {
@@ -212,12 +224,19 @@ export default {
       })
       const plans = await response.json()
       this.$emit('plans-changed', plans)
+    },
+    handleInvalidForm() {
+      const defaultSubmitText = this.submitFormText
+      this.submitFormText = 'Preencha todos os campos corretamente'
+      setTimeout(() => {
+        this.submitFormText = defaultSubmitText
+      }, 1000)
     }
   },
   async created() {
     const states = await this.getStates()
     this.setStates(states)
-  }
+  },
 }
 </script>
 
