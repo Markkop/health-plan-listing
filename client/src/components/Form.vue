@@ -148,12 +148,12 @@ export default {
     },
     async getProfessions (stateInitials, cityName) {
       const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
-      const professionsUrl = `http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/profissao/${stateInitials}/${cityNameUtf8}?api-key=ddd70c32-fc98-4618-b494-a9698f824353`
+      const professionsUrl = `https://apisimulador.qualicorp.com.br/profissao/${stateInitials}/${cityNameUtf8}?api-key=ddd70c32-fc98-4618-b494-a9698f824353`
       return this.fetchAndSetLoading(professionsUrl, 'profession')
     },
     async getEntities (stateInitials, cityName, profession) {
       const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
-      const entitiesUrl = `http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/entidade/${profession}/${stateInitials}/${cityNameUtf8}?api-key=4b94dba2-5524-4632-939b-92df1c50a645`
+      const entitiesUrl = `https://apisimulador.qualicorp.com.br/entidade/${profession}/${stateInitials}/${cityNameUtf8}?api-key=4b94dba2-5524-4632-939b-92df1c50a645`
       return this.fetchAndSetLoading(entitiesUrl, 'entity')
     },
     async setStates (states) {
@@ -194,7 +194,7 @@ export default {
         this.handleInvalidForm()
         return
       }
-      const url = 'http://lb-aws-1105894158.sa-east-1.elb.amazonaws.com/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c'
+      const url = 'https://apisimulador.qualicorp.com.br/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c'
       const formattedDateString = this.birthDate.split('-').reverse().join('-')
       const body = {
         entidade: this.entity.selected.id,
