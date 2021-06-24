@@ -1,4 +1,4 @@
-# health-plan-listing
+# Health Plan Listing
 
 ## Project setup
 ```
