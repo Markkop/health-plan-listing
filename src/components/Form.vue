@@ -34,6 +34,7 @@
       <button
         type="submit"
         id="form-submit-button"
+        :disabled="!isFormValid"
         >
         {{ submitFormText }}
       </button>
@@ -226,12 +227,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   #form-submit-button {
-    justify-content: center;
+    transition: width 2s;
+    align-self: center;
   }
 
+  #plans-form {
+    display: flex;
+    flex-direction: column;
+  }
   #plans-form > * {
     margin: 5px 0
+  }
+
+  .form-input {
+    width: 500px;
   }
 </style>

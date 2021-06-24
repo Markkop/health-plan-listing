@@ -10,7 +10,7 @@
     <select 
       :name="type" 
       :id="`${type}-select`"
-      class='form-select'
+      class='form-select form-input'
       @change="onChange"
       :disabled="!hasRequiredSelection || isLoading"
       >
@@ -87,7 +87,4 @@ export default {
     width: 75px;
   }
 
-  .form-select {
-    width: max-content;
-  }
 </style>

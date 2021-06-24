@@ -4,7 +4,6 @@
       @plans-changed="OnPlansChanged"
     />
     <Plans
-      v-if="plans.length"
       :plans="plans"
     />
   </main>
@@ -35,13 +34,14 @@ export default {
 </script>
 <style scoped>
   #home-main {
+    justify-content: space-evenly;
     align-items: center;
     margin: 30px auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   #home-main section {
-    margin-top: 20px
+    margin-top: 20px;
   }
 </style>

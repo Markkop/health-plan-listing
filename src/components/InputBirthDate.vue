@@ -4,6 +4,7 @@
     <input 
       type="text" 
       name="birthDate"
+      class="form-input"
       placeholder="DD-MM-AAAA"
       v-model="formattedBirthDate"
       maxlength="10"
