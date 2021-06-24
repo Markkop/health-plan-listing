@@ -28,17 +28,22 @@
         :hasRequiredSelection="Boolean(selectedProfession)"
         @change="setSelectedOption"
       />
+      <InputBirthDate 
+        @birth-date-changed="onBirthDateChange" 
+      />
     </form>
   </main>
 </template>
 
 <script>
 import Select from './Select.vue'
+import InputBirthDate from './InputBirthDate.vue'
 
 export default {
   name: 'Form',
   components: {
-    Select
+    Select,
+    InputBirthDate
   },
   data() {
     return {
@@ -61,7 +66,8 @@ export default {
         list: [],
         selected: null,
         isLoading: false,
-      }
+      },
+      birthDate: '',
     }
   },
   computed: {
@@ -179,6 +185,10 @@ export default {
         default:
           break;
       }
+    },
+    onBirthDateChange(dateString) {
+      this.birthDate = dateString
+    },
     }
   },
   async created() {
