@@ -182,22 +182,7 @@ export default {
       list.sort((itemA, itemB) => itemA.nome.localeCompare(itemB.nome))
     },
     setSelectedOption(type, selectedOption) {
-      switch (type) {
-        case 'city':
-          this.city.selected = selectedOption
-          break;
-        case 'state':
-          this.state.selected = selectedOption
-          break;
-        case 'profession':
-          this.profession.selected = selectedOption
-          break;
-        case 'entity':
-          this.entity.selected = selectedOption
-          break;
-        default:
-          break;
-      }
+      this[type].selected = selectedOption
     },
     onBirthDateChange(dateString) {
       this.birthDate = dateString
