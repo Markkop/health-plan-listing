@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id="home-main">
     <Form
       @plans-changed="OnPlansChanged"
     />
@@ -33,3 +33,15 @@ export default {
   }
 };
 </script>
+<style scoped>
+  #home-main {
+    align-items: center;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #home-main section {
+    margin-top: 20px
+  }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="select-container">
     <label 
       :id="`${type}-select-label`"
       class='select-label'
@@ -10,6 +10,7 @@
     <select 
       :name="type" 
       :id="`${type}-select`"
+      class='form-select'
       @change="onChange"
       :disabled="!hasRequiredSelection || isLoading"
       >
@@ -76,7 +77,17 @@ export default {
 </script>
 
 <style scoped>
+  .select-container {
+    display: flex;
+    flex-direction: row;
+  }
+
   .select-label {
     text-transform: capitalize;
+    width: 75px;
+  }
+
+  .form-select {
+    width: max-content;
   }
 </style>

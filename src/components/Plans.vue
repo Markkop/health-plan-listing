@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section id="plans-container">
+    Planos:
     <ul>
       <li
         v-for="plan in plans"

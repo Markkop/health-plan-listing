@@ -1,6 +1,6 @@
 <template>
-  <main class="page">
-    <form @submit.prevent="onSubmit">
+  <section class="page">
+    <form @submit.prevent="onSubmit" id="plans-form">
       <Select
         type="state"
         :options="state.list"
@@ -33,11 +33,12 @@
       />
       <button
         type="submit"
+        id="form-submit-button"
         >
         {{ submitFormText }}
       </button>
     </form>
-  </main>
+  </section>
 </template>
 
 <script>
@@ -226,18 +227,11 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  #form-submit-button {
+    justify-content: center;
+  }
+
+  #plans-form > * {
+    margin: 5px 0
+  }
 </style>
