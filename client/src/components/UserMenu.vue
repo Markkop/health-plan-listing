@@ -56,6 +56,7 @@ export default {
 
   .user-menu-form-container {
     display: flex;
+    margin: 10px 0;
   }
 
   .user-menu-form {

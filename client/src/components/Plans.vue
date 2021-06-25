@@ -39,7 +39,7 @@ export default {
 <style scoped>
   #plans-list {
     overflow-y: scroll;
-    height: 70vh;
+    max-height: 60vh;
     padding: 0;
   }
 </style>
