@@ -15,7 +15,7 @@ export default {
 </script>
 <style scoped>
   #page-header {
-    height: 30px;
+    height: auto;
     border-bottom: 2px solid black;
   }
 </style>

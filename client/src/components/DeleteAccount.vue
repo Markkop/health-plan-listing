@@ -1,11 +1,15 @@
 <template>
-  <div id="delete-account-container">
+  <div
+    id="delete-account-container"
+    class="user-menu-form-container"
+    >
     <button @click="onDeleteAccountDisplayToggle" >
-    Deletar Conta
+      {{ isDeleteAccountFormDisplayed ? 'Cancelar' : 'Deletar conta'}}
     </button>
     <form
       v-if="isDeleteAccountFormDisplayed"
       id="delete-account-form"
+      class="user-menu-form"
       @submit.prevent="onChangePasswordSubmit"
       >
       <Input
@@ -58,11 +62,5 @@ export default {
 }
 </script>
 <style scoped>
-  #delete-account-container {
-    display: flex;
-  }
 
-  #delete-account-form {
-    display: flex;
-  }
 </style>

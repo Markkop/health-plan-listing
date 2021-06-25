@@ -49,8 +49,40 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
   #user-container {
     display: flex;
+  }
+
+  .user-menu-form-container {
+    display: flex;
+  }
+
+  .user-menu-form {
+    display: flex;
+  }
+
+  .user-menu-form > * {
+    margin: 5px 10px;
+  }
+
+  @media (max-width: 768px) {
+    #user-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #user-options-container {
+      flex-direction: column;
+    }
+
+    .user-menu-form {
+      flex-direction: column;
+    }
+
+    .user-menu-input-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>

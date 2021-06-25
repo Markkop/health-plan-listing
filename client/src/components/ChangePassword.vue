@@ -1,11 +1,15 @@
 <template>
-  <div id="change-password-container">
+  <div
+    id="change-password-container"
+    class="user-menu-form-container"
+    >
     <button @click="onChangePasswordDisplayToggle" >
-    Mudar senha
+      {{ isPasswordChangeFormDisplayed ? 'Cancelar' : 'Mudar senha'}}
     </button>
     <form
       v-if="isPasswordChangeFormDisplayed"
       id="change-password-form"
+      class="user-menu-form"
       @submit.prevent="onChangePasswordSubmit"
       >
       <Input
@@ -70,11 +74,5 @@ export default {
 }
 </script>
 <style scoped>
-  #change-password-container {
-    display: flex;
-  }
 
-  #change-password-form {
-    display: flex;
-  }
 </style>

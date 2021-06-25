@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="user-menu-input-container" >
     <label
       :for="name"
-      class="login-input-label"
+      class="user-menu-input-label"
       >
       {{ label }}:
     </label>
@@ -10,7 +10,7 @@
       :type="type"
       :name="name"
       :required="required"
-      class="login-input"
+      class="user-menu-input"
       @change="onChange"
       >
   </div>

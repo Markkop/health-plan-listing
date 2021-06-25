@@ -1,6 +1,8 @@
 <template>
   <div id="user-options-container" >
-    {{ `[${email}]` }}
+    <span>
+      {{ `[${email}]` }}
+    </span>
     <ChangePassword
       :email="email"
     />
@@ -37,5 +39,9 @@ export default {
 <style scoped>
   #user-options-container {
     display: flex;
+  }
+
+  #user-options-container > * {
+    margin: 5px 10px;
   }
 </style>

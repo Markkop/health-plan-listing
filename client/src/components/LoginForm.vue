@@ -1,10 +1,17 @@
 <template>
-  <div id="login-form-container">
-    <a @click="onLoginRegisterToggle" >
-    Login/Register
-    </a>
+  <div
+    id="login-form-container"
+    class="user-menu-form-container"
+    >
+    <button
+      id="login-register-toggle"
+      @click="onLoginRegisterToggle"
+      >
+      {{ loginRegisterText }}
+    </button>
     <form
       id="login-form"
+      class="user-menu-form"
       @submit.prevent="onSubmit"
       >
       <Input
@@ -57,6 +64,9 @@ export default {
   computed: {
     onSubmit () {
       return this.isRegister ? this.onRegisterSubmit : this.onLoginSubmit
+    },
+    loginRegisterText () {
+      return this.isRegister ? 'Fazer login' : 'Registrar-se'
     }
   },
   methods: {
@@ -99,11 +109,7 @@ export default {
 }
 </script>
 <style scoped>
-  #login-form-container {
-    display: flex;
-  }
-
-  #login-form {
-    display: flex;
+  #login-register-toggle {
+    margin: auto 10px
   }
 </style>
