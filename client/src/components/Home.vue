@@ -5,6 +5,7 @@
     />
     <Plans
       :plans="plans"
+      :isWaitingUserInput="isWaitingUserInput"
     />
   </main>
 </template>
@@ -22,12 +23,17 @@ export default {
   },
   data () {
     return {
-      plans: mockedPlans
+      isWaitingUserInput: true,
+      plans: {
+        list: [],
+        isLoading: false
+      }
     }
   },
   methods: {
     OnPlansChanged (plans) {
-      this.plans = plans.planos
+      this.isWaitingUserInput = false
+      this.plans = plans
     }
   }
 }

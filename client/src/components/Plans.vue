@@ -1,10 +1,10 @@
 <template>
   <section id="plans-container">
-    {{ hasPlans ? 'Planos oferecidos:' : 'Os planos disponíveis para você aparecerão aqui ;)'}}
+    {{ plansListTitle }}
     <ul v-if="hasPlans" id="plans-list">
       <PlanCard
-        v-for="plan in plans"
-        :key="plan.idProdutoFatura"
+        v-for="plan in plans.list"
+        :key="`${plan.id}-${plan.idProdutoFatura}`"
         :planTitle="plan.nome_plano_ans"
         :logoOperator="plan.operadoraLogo"
         :operator="plan.operadora"
@@ -27,11 +27,23 @@ export default {
     PlanCard
   },
   props: {
-    plans: Array
+    plans: Object,
+    isWaitingUserInput: Boolean
   },
   computed: {
     hasPlans () {
-      return this.plans.length
+      return this.plans.list.length
+    },
+    plansListTitle () {
+      if (this.plans.isLoading) {
+        return 'Carregando planos...'
+      }
+
+      if (this.isWaitingUserInput) {
+        return 'Os planos disponíveis para você aparecerão aqui ;)'
+      }
+
+      return this.hasPlans ? 'Planos oferecidos:' : 'Nenhum plano encontrado :('
     }
   }
 }

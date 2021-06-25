@@ -202,6 +202,10 @@ export default {
         cidade: this.city.selected.nome,
         datanascimento: [formattedDateString]
       }
+      this.$emit('plans-changed', {
+        list: [],
+        isLoading: true
+      })
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),
@@ -209,8 +213,11 @@ export default {
           'content-type': 'application/json;charset=UTF-8'
         }
       })
-      const plans = await response.json()
-      this.$emit('plans-changed', plans)
+      const plansList = await response.json()
+      this.$emit('plans-changed', {
+        list: plansList.planos,
+        isLoading: false
+      })
     },
     handleInvalidForm () {
       const defaultSubmitText = this.submitFormText
