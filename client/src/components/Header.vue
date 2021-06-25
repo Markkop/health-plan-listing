@@ -1,18 +1,15 @@
 <template>
   <header id="page-header">
+    <UserMenu/>
   </header>
 </template>
 
 <script>
+import UserMenu from './UserMenu.vue'
 export default {
   name: 'Header',
   components: {
-  },
-  data () {
-    return {
-    }
-  },
-  methods: {
+    UserMenu
   }
 }
 </script>
