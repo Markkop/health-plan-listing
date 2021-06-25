@@ -13,7 +13,6 @@
 <script>
 import Plans from './Plans'
 import Form from './Form'
-import mockedPlans from '../mocks/plans'
 
 export default {
   name: 'Home',
