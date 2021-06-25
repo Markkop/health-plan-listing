@@ -5,7 +5,8 @@ module.exports = {
   pages: {
     index: {
       entry: 'client/src/main.js',
-      template: 'client/public/index.html'
+      template: 'client/public/index.html',
+      title: 'Health Plan Listing'
     }
   },
   configureWebpack: {
@@ -24,7 +25,7 @@ module.exports = {
       .plugin('copy')
       .use(require('copy-webpack-plugin'), [[{
         from: path.resolve(__dirname, 'client/public'),
-        to: path.resolve(__dirname, 'dist'),
+        to: path.resolve(__dirname, 'client/dist'),
         toType: 'dir',
         ignore: ['.DS_Store']
       }]])

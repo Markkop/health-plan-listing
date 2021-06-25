@@ -28,7 +28,7 @@ try {
   })
 
   app.get('/favicon.ico', function (_, response) {
-    response.sendStatus(204)
+    response.sendFile(path.join(clientDistPath, 'favicon.ico'))
   })
 
   app.use('/user', users)
