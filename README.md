@@ -8,6 +8,8 @@ This project is a fullstack coding challenge which consumes locations and health
 
 Demo: http://health-plan-listing.herokuapp.com/
 
+![demohealth](https://user-images.githubusercontent.com/16388408/123480932-6ab81300-d5d9-11eb-8d5c-4fe79c7533ae.gif)
+
 ## Requisites
 ### Frontend
 
