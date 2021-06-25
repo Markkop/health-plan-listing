@@ -31,8 +31,6 @@ export default {
       isLoggedIn: false
     }
   },
-  computed: {
-  },
   methods: {
     onEmailChanged (email) {
       this.email = email
@@ -60,10 +58,6 @@ export default {
 
   .user-menu-form {
     display: flex;
-  }
-
-  .user-menu-form > * {
-    margin: 5px 10px;
   }
 
   @media (max-width: 768px) {
