@@ -27,7 +27,6 @@ export default {
     --color6: #004e64;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(141deg, var(--color4) 0%, var(--color3) 100%);
     height: 100vh;
   }
 </style>

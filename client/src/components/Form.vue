@@ -242,6 +242,6 @@ export default {
   }
 
   .form-input {
-    max-width: 500px;
+    width: 300px;
   }
 </style>

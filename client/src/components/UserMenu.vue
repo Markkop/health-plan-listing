@@ -80,6 +80,10 @@ export default {
       flex-direction: column;
     }
 
+    .user-menu-form-container {
+      flex-direction: column;
+    }
+
     .user-menu-input-container {
       display: flex;
       flex-direction: column;
