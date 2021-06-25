@@ -61,7 +61,7 @@ async function login (request, response, next) {
 async function changePassword (request, response, next) {
   try {
     const { body: { email, password, newPassword } } = request
-    const user = await userModel.findOneAndUpdate({ email }, { password: newPassword }, { new: true })
+    const user = await userModel.findOne({ email })
     if (!user) {
       response.json({
         status: 'error',
@@ -75,6 +75,8 @@ async function changePassword (request, response, next) {
       response.json(passwordMismatchError)
       return
     }
+
+    user.password = newPassword
 
     await user.save()
     response.json({
