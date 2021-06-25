@@ -60,6 +60,10 @@ export default {
     display: flex;
   }
 
+  .user-menu-form > * {
+    margin-left: 10px
+  }
+
   @media (max-width: 768px) {
     #user-container {
       flex-direction: column;
