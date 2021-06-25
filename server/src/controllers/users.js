@@ -5,7 +5,15 @@ import { validatePassword } from '../utils/validation'
 async function create (request, response, next) {
   try {
     const { body: { name, email, password } } = request
-    const user = { name, email, password }
+
+    const existingUser = await userModel.findOne({ email })
+    if (existingUser) {
+      response.json({
+        status: 'error',
+        message: 'Email already in use.'
+      })
+      return
+    }
     await userModel.create(user)
     response.json({
       status: 'success',
