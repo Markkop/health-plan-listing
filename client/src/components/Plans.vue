@@ -2,20 +2,30 @@
   <section id="plans-container">
     {{ hasPlans ? 'Planos oferecidos:' : 'Os planos disponíveis para você aparecerão aqui ;)'}}
     <ul v-if="hasPlans" id="plans-list">
-      <li
+      <PlanCard
         v-for="plan in plans"
-        :key="plan.id"
-      >
-        {{ plan.nome_plano_ans}}
-      </li>
+        :key="plan.idProdutoFatura"
+        :planTitle="plan.nome_plano_ans"
+        :logoOperator="plan.operadoraLogo"
+        :operator="plan.operadora"
+        :coparticipation="plan.coparticipacao"
+        :level="plan.nivel"
+        :planType="plan.plano"
+        :refund="plan.reembolso"
+        :segmentation="plan.segmentacao"
+        :price="plan.precos.total"
+      />
     </ul>
   </section>
 </template>
 
 <script>
-
+import PlanCard from './PlanCard'
 export default {
   name: 'Plans',
+  components: {
+    PlanCard
+  },
   props: {
     plans: Array
   },
@@ -30,5 +40,6 @@ export default {
   #plans-list {
     overflow-y: scroll;
     height: 70vh;
+    padding: 0;
   }
 </style>
