@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Home from './components/Home'
-import Header from './components/Header'
+import { Home } from '@pages'
+import { Header } from '@organisms'
 
 export default {
   name: 'App',

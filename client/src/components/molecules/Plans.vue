@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import PlanCard from './PlanCard'
+import { PlanCard } from '@molecules'
 export default {
   name: 'Plans',
   components: {

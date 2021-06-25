@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import LoginForm from './LoginForm'
-import UserOptions from './UserOptions'
+import { LoginForm, UserOptions } from '@molecules'
 export default {
   name: 'UserMenu',
   components: {

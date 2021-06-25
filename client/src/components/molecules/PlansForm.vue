@@ -43,8 +43,7 @@
 </template>
 
 <script>
-import Select from './Select.vue'
-import InputBirthDate from './InputBirthDate.vue'
+import { Select, InputBirthDate } from '@atoms'
 
 const PLANS_BASE_URL = 'https://apisimulador.qualicorp.com.br'
 const LOCATION_BASE_URL = 'https://servicodados.ibge.gov.br/api/v1'

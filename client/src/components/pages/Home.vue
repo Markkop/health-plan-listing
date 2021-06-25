@@ -11,8 +11,7 @@
 </template>
 
 <script>
-import Plans from './Plans'
-import PlansForm from './PlansForm'
+import { Plans, PlansForm } from '@molecules'
 
 export default {
   name: 'Home',

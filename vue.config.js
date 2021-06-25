@@ -11,7 +11,11 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'client/src')
+        '@': path.resolve(__dirname, 'client/src'),
+        '@atoms': path.resolve(__dirname, 'client/src/components/atoms'),
+        '@molecules': path.resolve(__dirname, 'client/src/components/molecules'),
+        '@organisms': path.resolve(__dirname, 'client/src/components/organisms'),
+        '@pages': path.resolve(__dirname, 'client/src/components/pages')
       }
     }
   },

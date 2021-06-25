@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import ChangePassword from './ChangePassword'
-import DeleteAccount from './DeleteAccount'
+import { ChangePassword, DeleteAccount } from '@molecules'
 export default {
   name: 'UserOptions',
   components: {

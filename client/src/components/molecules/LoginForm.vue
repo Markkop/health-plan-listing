@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import api from '../utils/api'
-import Input from './Input.vue'
+import api from '../../utils/api'
+import { Input } from '@atoms'
 export default {
   name: 'LoginForm',
   components: {

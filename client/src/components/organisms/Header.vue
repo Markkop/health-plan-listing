@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UserMenu from './UserMenu.vue'
+import { UserMenu } from '@organisms'
 export default {
   name: 'Header',
   components: {
