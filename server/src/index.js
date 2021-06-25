@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import logger from 'morgan'
+import cors from 'cors'
 import users from './routes/users'
 import { connectMongoose } from './utils/mongoose'
 import middlewares from './middlewares'
@@ -16,6 +17,7 @@ try {
 
   app.set('secretKey', 'healthplans')
 
+  app.use(cors())
   app.use(logger('dev'))
   app.use(express.json())
 
@@ -38,6 +40,5 @@ try {
     console.log(`Server is running on port ${PORT}.`)
   })
 } catch (error) {
-  console.log('opaaa')
   console.error(error)
 }
