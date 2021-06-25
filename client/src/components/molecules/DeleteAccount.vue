@@ -53,6 +53,7 @@ export default {
     async onChangePasswordSubmit () {
       const result = await api.deleteUser(this.email, this.password)
       if (result.status !== 'success') {
+        alert(result.message)
         return
       }
       this.isDeleteAccountFormDisplayed = false

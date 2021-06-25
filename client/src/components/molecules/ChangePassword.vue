@@ -66,6 +66,7 @@ export default {
     async onChangePasswordSubmit () {
       const result = await api.changePassword(this.email, this.password, this.newPassword)
       if (result.status !== 'success') {
+        alert(result.message)
         return
       }
       this.isPasswordChangeFormDisplayed = false

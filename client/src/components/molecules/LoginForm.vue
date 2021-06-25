@@ -86,6 +86,7 @@ export default {
     async onLoginSubmit () {
       const result = await api.login(this.email, this.password)
       if (result.status !== 'success') {
+        alert(result.message)
         return
       }
 
@@ -95,11 +96,13 @@ export default {
     },
     async onRegisterSubmit () {
       if (this.password !== this.confirmPassword) {
+        alert('As senhas não são iguais')
         return
       }
 
       const result = await api.register(this.email, this.password)
       if (result.status !== 'success') {
+        alert(result.message)
         return
       }
 
