@@ -1,6 +1,6 @@
 <template>
   <main id="home-main">
-    <Form
+    <PlansForm
       @plans-changed="OnPlansChanged"
     />
     <Plans
@@ -12,13 +12,13 @@
 
 <script>
 import Plans from './Plans'
-import Form from './Form'
+import PlansForm from './PlansForm'
 
 export default {
   name: 'Home',
   components: {
     Plans,
-    Form
+    PlansForm
   },
   data () {
     return {

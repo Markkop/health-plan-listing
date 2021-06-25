@@ -46,8 +46,11 @@
 import Select from './Select.vue'
 import InputBirthDate from './InputBirthDate.vue'
 
+const PLANS_BASE_URL = 'https://apisimulador.qualicorp.com.br'
+const LOCATION_BASE_URL = 'https://servicodados.ibge.gov.br/api/v1'
+
 export default {
-  name: 'Form',
+  name: 'PlansForm',
   components: {
     Select,
     InputBirthDate
@@ -139,21 +142,21 @@ export default {
       return cities
     },
     async getCities (stateId) {
-      const citiesUrl = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${stateId}/municipios`
+      const citiesUrl = `${LOCATION_BASE_URL}/localidades/estados/${stateId}/municipios`
       return this.fetchAndSetLoading(citiesUrl, 'city')
     },
     async getStates () {
-      const statesUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
+      const statesUrl = `${LOCATION_BASE_URL}/localidades/estados`
       return this.fetchAndSetLoading(statesUrl, 'state')
     },
     async getProfessions (stateInitials, cityName) {
       const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
-      const professionsUrl = `https://apisimulador.qualicorp.com.br/profissao/${stateInitials}/${cityNameUtf8}?api-key=ddd70c32-fc98-4618-b494-a9698f824353`
+      const professionsUrl = `${PLANS_BASE_URL}/profissao/${stateInitials}/${cityNameUtf8}?api-key=ddd70c32-fc98-4618-b494-a9698f824353`
       return this.fetchAndSetLoading(professionsUrl, 'profession')
     },
     async getEntities (stateInitials, cityName, profession) {
       const cityNameUtf8 = Buffer.from(cityName, 'utf-8')
-      const entitiesUrl = `https://apisimulador.qualicorp.com.br/entidade/${profession}/${stateInitials}/${cityNameUtf8}?api-key=4b94dba2-5524-4632-939b-92df1c50a645`
+      const entitiesUrl = `${PLANS_BASE_URL}/entidade/${profession}/${stateInitials}/${cityNameUtf8}?api-key=4b94dba2-5524-4632-939b-92df1c50a645`
       return this.fetchAndSetLoading(entitiesUrl, 'entity')
     },
     async setStates (states) {
@@ -194,7 +197,13 @@ export default {
         this.handleInvalidForm()
         return
       }
-      const url = 'https://apisimulador.qualicorp.com.br/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c'
+
+      this.$emit('plans-changed', {
+        list: [],
+        isLoading: true
+      })
+
+      const url = `${PLANS_BASE_URL}/plano?api-key=261fd4d0-fd9f-468a-afa9-f5a89ed3701c`
       const formattedDateString = this.birthDate.split('-').reverse().join('-')
       const body = {
         entidade: this.entity.selected.id,
@@ -202,10 +211,6 @@ export default {
         cidade: this.city.selected.nome,
         datanascimento: [formattedDateString]
       }
-      this.$emit('plans-changed', {
-        list: [],
-        isLoading: true
-      })
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),
