@@ -44,7 +44,7 @@ export default {
     display: flex;
     flex-direction: row;
     background-image: linear-gradient(141deg, var(--color4) 0%, var(--color3) 100%);
-    min-height: 90vh;
+    height: 100vh;
   }
 
   #home-main section {
