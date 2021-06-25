@@ -14,6 +14,11 @@ async function create (request, response, next) {
       })
       return
     }
+
+    const user = { email, password }
+    if (name) {
+      user.name = name
+    }
     await userModel.create(user)
     response.json({
       status: 'success',
@@ -29,7 +34,6 @@ async function login (request, response, next) {
   try {
     const { body: { email, password } } = request
     const user = await userModel.findOne({ email })
-
     if (!user) {
       response.json({
         status: 'error',
@@ -121,11 +125,11 @@ async function deleteUser (request, response, next) {
 async function list (_, response, next) {
   try {
     const users = await userModel.find({})
-    const usersNames = users.map(({ name }) => name)
+    const emails = users.map(({ email }) => email)
     response.json({
       status: 'success',
       message: 'User name list has been acquired.',
-      data: { list: usersNames }
+      data: { list: emails }
     })
   } catch (error) {
     console.log(error)
