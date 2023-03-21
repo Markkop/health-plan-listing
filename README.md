@@ -6,7 +6,7 @@
 
 This project is a fullstack coding challenge which consumes locations and health plans APIs and has a simple login system with password change and account deletion.
 
-Demo: http://health-plan-listing.herokuapp.com/
+Demo: https://health-plan-listing.onrender.com/ (it might take a while to wake up the hosting service)
 
 ![demohealth](https://user-images.githubusercontent.com/16388408/123480932-6ab81300-d5d9-11eb-8d5c-4fe79c7533ae.gif)
 
@@ -31,7 +31,7 @@ Demo: http://health-plan-listing.herokuapp.com/
 - States and cities using external API
 - JWT Authentication
 - Atomic Design for components structure
-- Continuous Deploy with Github Actions to Heroku
+- Continuous Deploy with ~~Github Actions to Heroku~~ Render.com
 
 ## How to Run
 
